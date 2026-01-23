@@ -19,6 +19,7 @@ What do you hope to be able to build confidently by the end of the semester? I w
 
 After completing the Microsoft Learn Git module:
 
-What was one new concept for you? None of these concepts were new since we learned them last semester. 
+What was one new concept for you? The new concept would be all of them but one that i like allot is git push.
 
-What concept feels clearer now than before? The Valubles  feel more cleaner so the strings and the integers. 
+What concept feels clearer now than before? All of them feel cleaner i have a better undertsnaing of them all.
+
