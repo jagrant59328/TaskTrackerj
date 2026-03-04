@@ -15,12 +15,14 @@ public class TaskItem
         get => _Totalcount;
     }
     //constructors build 
-    public TaskItem()
+    public TaskItem(string title)
     {
-        ++_Totalcount;
+        Id = ++_Totalcount;
+        Title = title; 
     }
 
-    public int Id { get; set; }
-    public string Title { get; set; } = "";
+    public int Id { get; }
+    public string Title = string.Empty; 
     public bool IsComplete { get; set; }
+    //consider achivement system
 }

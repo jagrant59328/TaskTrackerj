@@ -1,51 +1,42 @@
-
 using TaskTracker.TaskDomain;
+using TaskTracker;
+using TaskDomain;
 
 var shouldContinue = true;
 do
 {
     Console.WriteLine("Welcome to TaskTracker!");
-    Console.WriteLine("1. List Tasks");
-    Console.WriteLine("2. About");
-    Console.WriteLine("3. Exit");
+
+    foreach (var item in Enum.GetValues<MainMenu>())
+    {
+        Console.WriteLine($"{(int)item}. {item}");
+    }
+
     Console.Write("Choose an option: ");
 
     int.TryParse(Console.ReadLine(), null, out int input);
+    //this is a object representing todo list
+    TaskItemService taskItemService = new();
+    taskItemService.PopulateInitialTasksItems();
 
-      switch (input)
+    switch (input)
     {
-        case 1:
-            // list the tasks
-            TaskItem Taskone = new();
-            
-            Taskone.Title = "Take out the trash";
-
-            TaskItem Tasktwo = new();
-         
-            
-            Tasktwo.Title = "Upgrade Phone";
-            TaskItem Taskthree = new();
-            
-            Taskthree.Title = "Clean the roof";
-           
-
-            List<TaskItem> Taskitems = [];
-            Taskitems.Add(Taskone);
-            Taskitems.Add(Tasktwo);
-            Taskitems.Add(Taskthree);
-            
-            foreach (var item in Taskitems)
-            {
-                Console.WriteLine($"{item.Id}: {item.Title}");
-            }
-            Console.WriteLine(Taskitems);
-             break;
-        
-        case 2:
-         
+        case (int)MainMenu.ListTasks:
+            taskItemService.DisplayTaskItems();
             break;
-        case 3:
-            shouldContinue = false;
+        case (int)MainMenu.AddTask:
+            // add logic to add a task
+            Console.Write("Enter the task title: ");
+            var userInput = Console.ReadLine();
+            if(userInput != null)
+            taskItemService.AddTask(userInput);
+            break;
+
+    
+
+        case (int)MainMenu.DeleteTask:
+            break;
+        case (int)MainMenu.UpdateTask:
             break;
         default:
             shouldContinue = false;
@@ -54,13 +45,9 @@ do
     // make it so that the pro
 } while (shouldContinue);
 
- void Aboutmeinformation()
+void AboutMeInformation()
 {
-      Console.WriteLine("Melissa Hegney");
-            Console.WriteLine("Merlissa09");
-            Console.WriteLine(DateTime.IsLeapYear(1998));
-            Console.WriteLine(DateTime.Now);
-            Console.WriteLine();
-
+    Console.WriteLine("My name is Jayden G");
+    Console.WriteLine("My GitHub name is Jayden59328");
+    Console.WriteLine();
 }
-
