@@ -7,7 +7,28 @@ public class TaskItemService
 {
     //instance variable
     List<TaskItem> Taskitems = new();
-    public void PopulateInitialTasksItems()
+
+    public TaskItemService()
+    {
+        //constructor
+        PopulateInitialTasksItems();
+
+    }
+//overloaded constructor
+    public TaskItemService(List<TaskItem> taskitems, bool append = true)
+    {
+        if (append)
+        {//create initial list of task items
+            PopulateInitialTasksItems();
+            this.Taskitems.AddRange(taskitems);
+        }
+        else
+        {//replace the existing task items with existing TI
+            this.Taskitems = taskitems;
+        }
+    }
+
+    private void PopulateInitialTasksItems()
     {
 
         TaskItem Taskone = new("Take out the trash");
@@ -26,11 +47,21 @@ public class TaskItemService
         }
     }
 
-public void AddTask(string title)
-        {
-        Taskitems.Add(new TaskItem(title)); 
+    public void AddTask(string title)
+    {
+        Taskitems.Add(new TaskItem(title));
 
-        }
+    }
+    public void DeleteTask(int id)
+    {
+        //what is the task, can idnetify by name, Id is best
+        //Id is more unique 
+
+
+    }
+    
+
+
     //move this to the Ui layer 
     public void DisplayTaskItems()
     {

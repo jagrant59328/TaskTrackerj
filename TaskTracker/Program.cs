@@ -3,6 +3,8 @@ using TaskTracker;
 using TaskDomain;
 
 var shouldContinue = true;
+  TaskItemService taskItemService = new();
+
 do
 {
     Console.WriteLine("Welcome to TaskTracker!");
@@ -15,15 +17,13 @@ do
     Console.Write("Choose an option: ");
 
     int.TryParse(Console.ReadLine(), null, out int input);
-    //this is a object representing todo list
-    TaskItemService taskItemService = new();
-    taskItemService.PopulateInitialTasksItems();
 
     switch (input)
     {
         case (int)MainMenu.ListTasks:
             taskItemService.DisplayTaskItems();
             break;
+        
         case (int)MainMenu.AddTask:
             // add logic to add a task
             Console.Write("Enter the task title: ");
@@ -35,9 +35,14 @@ do
     
 
         case (int)MainMenu.DeleteTask:
+           var success = int.TryParse(Console.ReadLine(), null, out int Idtodelete);
+            if(success)
+            taskItemService.DeleteTask(Idtodelete);
             break;
+
         case (int)MainMenu.UpdateTask:
             break;
+       
         default:
             shouldContinue = false;
             break;
