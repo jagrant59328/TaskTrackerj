@@ -2,7 +2,7 @@ using System.Dynamic;
 
 namespace TaskTracker.TaskDomain;
 
-public class TaskItem
+public class TaskItem : ITaskable
 {
 
     //instance properties 
@@ -18,11 +18,32 @@ public class TaskItem
     public TaskItem(string title)
     {
         Id = ++_Totalcount;
-        Title = title; 
+        Title = title;
     }
 
     public int Id { get; }
-    public string Title = string.Empty; 
-    public bool IsComplete { get; set; }
+    private string Title = string.Empty;
+    private bool Complete { get; set; }
     //consider achivement system
+
+    public string GetTitle()
+    {
+        return Title;
+    }
+
+    public string GetDescription()
+    {
+        return string.Empty;
+    }
+
+    public bool IsComplete()
+    {
+        return Complete;
+    }
+
+    public bool MarkComplete()
+    {
+        Complete = true;
+        return true;
+    }
 }

@@ -37,7 +37,19 @@ do
         case (int)MainMenu.DeleteTask:
            var success = int.TryParse(Console.ReadLine(), null, out int Idtodelete);
             if(success)
-            taskItemService.DeleteTask(Idtodelete);
+            {
+                taskItemService.DeleteTask(Idtodelete);
+
+                
+                
+                    Console.WriteLine("Task deleted successfully.");
+                
+                
+               
+            } else
+            {
+                Console.WriteLine("Invalid input. Please enter a valid task ID.");
+            }
             break;
 
         case (int)MainMenu.UpdateTask:

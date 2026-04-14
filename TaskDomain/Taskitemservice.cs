@@ -43,7 +43,7 @@ public class TaskItemService
 
         foreach (var item in Taskitems)
         {
-            Console.WriteLine($"{item.Id}: {item.Title}");
+            Console.WriteLine($"{item.Id}: {item.GetTitle()}");
         }
     }
 
@@ -52,22 +52,21 @@ public class TaskItemService
         Taskitems.Add(new TaskItem(title));
 
     }
-    public void DeleteTask(int id)
+    public int DeleteTask(int id) //deletes any task items with matching Id
     {
         //what is the task, can idnetify by name, Id is best
         //Id is more unique 
-
-
+        //for better ux confirming the taskitem
+       return Taskitems.RemoveAll(TaskItem => TaskItem.Id == id);
     }
     
 
-
-    //move this to the Ui layer 
+    //move this to the Ui layer
     public void DisplayTaskItems()
     {
         foreach (var item in Taskitems)
         {
-            Console.WriteLine($"{item.Id}: {item.Title}");
+            Console.WriteLine($"{item.Id}: {item.GetTitle()}");
         }
 
     }
